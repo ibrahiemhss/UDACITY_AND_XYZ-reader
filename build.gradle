@@ -21,7 +21,7 @@ allprojects {
     ext {
         androidSupportVersion = "28.+"
         glideVersion = "4.7.1"
-        okhttpVersion="3.10.0"
+        okhttpVersion = "3.10.0"
 
 
     }

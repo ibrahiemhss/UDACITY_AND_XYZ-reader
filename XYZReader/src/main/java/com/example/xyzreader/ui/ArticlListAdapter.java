@@ -117,7 +117,7 @@ class ArticlListAdapter extends RecyclerView.Adapter<ViewHolder> {
                 mCursor.getString(ArticleLoader.Query.THUMB_URL),
                 ImageLoaderHelper.getInstance(context).getImageLoader());
 
-
+//////////////////////////////////////////////////////////////////////////////////////////
         ImageLoaderHelper.getInstance(context).getImageLoader()
                 .get(mCursor.getString(ArticleLoader.Query.THUMB_URL), new ImageLoader.ImageListener() {
                     @SuppressWarnings("deprecation")
@@ -138,7 +138,7 @@ class ArticlListAdapter extends RecyclerView.Adapter<ViewHolder> {
                     }
                 });
 
-
+/////////////////////////////////////////////////////////////////////////////////////////////////
         holder.thumbnailView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
 
 
@@ -161,8 +161,9 @@ class ViewHolder extends RecyclerView.ViewHolder {
         thumbnailView = view.findViewById(R.id.thumbnail);
         titleView = view.findViewById(R.id.article_title);
         subtitleView = view.findViewById(R.id.article_subtitle);
+        ////////////////////////////////////
         LinearListContainer = view.findViewById(R.id.LinearListContainer);
-
+        ////////////////////////////////////
 
     }
 

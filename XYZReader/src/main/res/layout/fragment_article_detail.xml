@@ -98,9 +98,9 @@
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="@dimen/fab_margin"
         android:layout_marginEnd="@dimen/fab_margin"
-        app:rippleColor="@color/theme_primary"
         android:background="@drawable/add_fab_background"
         android:contentDescription="@string/action_share"
-        android:src="@drawable/ic_share" />
+        android:src="@drawable/ic_share"
+        app:rippleColor="@color/theme_primary" />
 
 </com.example.xyzreader.ui.DrawInsetsFrameLayout>

@@ -4,10 +4,6 @@
     <dimen name="list_top_margin">12dp</dimen>
     <dimen name="list_bottom_margin">24dp</dimen>
 
-
-    <!-- list articl toolbar -->
-
-
     <!-- list item -->
     <integer name="list_column_count">2</integer>
     <dimen name="network_image_height">100dp</dimen>

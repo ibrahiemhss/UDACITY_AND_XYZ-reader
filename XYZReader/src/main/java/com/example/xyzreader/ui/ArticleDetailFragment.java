@@ -135,14 +135,6 @@ public class ArticleDetailFragment extends Fragment implements
         return (ArticleDetailActivity) getActivity();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void onEnterAnimationComplete() {
-        super.getActivity().onEnterAnimationComplete();
-        Animator animator = ObjectAnimator.ofInt(mScrollView, "scrollY", 300).setDuration(400);
-        animator.start();
-
-
-    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -201,14 +193,7 @@ public class ArticleDetailFragment extends Fragment implements
         bindViews();
         updateStatusBar();
 
-        if (getArguments().getString(getActivity().getString(R.string.transition_photo)) != null) {
-            String transitionName = getArguments().getString(EXTRA_TRANSITION_NAME);
-            mRootView.setTransitionName(transitionName);
 
-
-        }
-
-        onEnterAnimationComplete();
         //////////////////////////////////////////////
         if (wideScreen() && savedInstanceState == null) {
             animate(mMaxWidthLinearLayout);
@@ -256,7 +241,7 @@ public class ArticleDetailFragment extends Fragment implements
         view.startAnimation(anim);
     }
 
-    ///////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
     //this return true if device is tablet
     private boolean isTablet() {
         return (getActivity().getResources().getConfiguration().screenLayout
@@ -300,7 +285,7 @@ public class ArticleDetailFragment extends Fragment implements
         }
     }
 
-    //////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////
     private void updateStatusBar() {
         int color = 0;
         if (mPhotoView != null && mTopInset != 0 && mScrollY > 0) {
