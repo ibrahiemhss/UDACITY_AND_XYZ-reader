@@ -25,8 +25,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/detail_photo_height"
                     android:background="@drawable/empty_detail"
-                    android:scaleType="centerCrop"
-                    android:transitionName="@string/transition_photo" />
+                    android:scaleType="centerCrop" />
 
 
             </FrameLayout>

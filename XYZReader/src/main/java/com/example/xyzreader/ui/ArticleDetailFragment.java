@@ -1,7 +1,5 @@
 package com.example.xyzreader.ui;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.app.LoaderManager;
