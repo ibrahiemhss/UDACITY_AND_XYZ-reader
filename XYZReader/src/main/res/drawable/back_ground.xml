@@ -1,0 +1,9 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" tools:keep="@drawable/back_ground">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" />
+            <corners android:radius="1dp" />
+            <stroke android:width="1dp" android:color="@color/ltgray" />
+        </shape>
+    </item>
+</selector>

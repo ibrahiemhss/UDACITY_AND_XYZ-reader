@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--list-->
+    <dimen name="toolbar_elevation">4dp</dimen>
+    <dimen name="network_imageView_height" tools:keep="@dimen/network_imageView_height">100dp
+    </dimen>
+
+    <!-- detail -->
+    <dimen name="detail_title_text_size">32sp</dimen>
+    <dimen name="detail_body_text_size">16sp</dimen>
+    <item name="detail_body_line_spacing_multiplier" format="float" type="fraction">1.25</item>
+
+    <dimen name="fab_elevation">6dp</dimen>
+    <dimen name="fab_press_translation_z">12dp</dimen>
+    <dimen name="fab_margin">6dp</dimen>
+
+</resources>

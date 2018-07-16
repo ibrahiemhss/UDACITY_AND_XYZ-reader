@@ -1,0 +1,11 @@
+<resources>
+    <!-- detail -->
+    <bool name="detail_is_card">true</bool>
+
+    <dimen name="detail_photo_height">560dp</dimen>
+    <dimen name="detail_card_top_margin">@dimen/detail_photo_height</dimen>
+    <dimen name="detail_card_width">700dp</dimen>
+    <dimen name="detail_container_hieght">@dimen/detail_photo_height</dimen>
+
+
+</resources>

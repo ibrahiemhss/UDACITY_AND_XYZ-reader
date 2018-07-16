@@ -1,0 +1,13 @@
+<resources>
+    <!-- list -->
+    <integer name="list_column_count">2</integer>
+
+    <!-- detail -->
+    <dimen name="detail_photo_height">280dp</dimen>
+    <dimen name="detail_inner_horiz_margin">112dp</dimen>
+    <dimen name="detail_card_top_margin">@dimen/detail_photo_height</dimen>
+    <dimen name="detail_card_width">460dp</dimen>
+    <dimen name="detail_container_hieght">@dimen/detail_photo_height</dimen>
+
+
+</resources>
