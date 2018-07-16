@@ -106,8 +106,6 @@ public class ArticleListActivity extends AppCompatActivity implements
     public void onlItemClick(long pos) {
         Intent intent = new Intent(Intent.ACTION_VIEW,
                 ItemsContract.Items.buildItemUri(pos));
-        intent.putExtra(EXTRA_TRANSITION_NAME, getResources().getString(R.string.transition_photo));
-
 
         startActivity(intent);
     }

@@ -56,7 +56,6 @@ public class ArticleDetailFragment extends Fragment implements
 
     private static final String ARG_ITEM_ID = "item_id";
     private static final float PARALLAX_FACTOR = 1.25f;
-    private static final String EXTRA_TRANSITION_NAME = "transition_photo";
     @SuppressLint("SimpleDateFormat")
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss");
     // Use default locale format
@@ -89,7 +88,6 @@ public class ArticleDetailFragment extends Fragment implements
     public static ArticleDetailFragment newInstance(long itemId, String transitionName) {
         Bundle arguments = new Bundle();
         arguments.putLong(ARG_ITEM_ID, itemId);
-        arguments.putString(EXTRA_TRANSITION_NAME, transitionName);
         ArticleDetailFragment fragment = new ArticleDetailFragment();
         fragment.setArguments(arguments);
         return fragment;
