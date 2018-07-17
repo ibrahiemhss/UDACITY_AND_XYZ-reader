@@ -7,6 +7,7 @@
     <!--list-->
     <dimen name="network_imageView_height" tools:keep="@dimen/network_imageView_height">100dp
     </dimen>
+    <dimen name="photo_elevation">6dp</dimen>
 
 
     <!-- detail -->
@@ -14,7 +15,7 @@
     <dimen name="detail_body_text_size">16sp</dimen>
     <item name="detail_body_line_spacing_multiplier" format="float" type="fraction">1.25</item>
     <dimen name="fab_elevation">6dp</dimen>
-    <dimen name="details_linearLayout_elevation">3dp</dimen>
+    <dimen name="details_linearLayout_elevation">1dp</dimen>
     <dimen name="fab_press_translation_z">12dp</dimen>
     <dimen name="fab_margin">8dp</dimen>
     <dimen name="meta_bar_elevation">6dp</dimen>
