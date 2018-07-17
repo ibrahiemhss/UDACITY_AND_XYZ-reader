@@ -113,7 +113,6 @@
                 android:padding="@dimen/article_body_padding"
                 android:paddingBottom="@dimen/detail_body_bottom_margin"
                 android:textColor="@color/gray20"
-                android:textColorLink="@color/theme_accent"
                 android:textSize="@dimen/detail_body_text_size" />
 
         </LinearLayout>

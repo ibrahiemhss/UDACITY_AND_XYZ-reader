@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -12,6 +13,7 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
@@ -28,7 +30,6 @@ import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
-import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 
 import java.text.ParseException;
@@ -59,6 +60,7 @@ public class ArticleDetailFragment extends Fragment implements
     private View mRootView;
     private int mMutedColor = 0xFF333333;
     private ImageView mPhotoView;
+    FloatingActionButton mFloatingActionButton;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -126,6 +128,7 @@ public class ArticleDetailFragment extends Fragment implements
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
 
 
+        mFloatingActionButton = mRootView.findViewById(R.id.share_fab);
         Toolbar toolbar = mRootView.findViewById(R.id.toolbar_details);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -160,7 +163,6 @@ public class ArticleDetailFragment extends Fragment implements
 
         }
     }
-    /////////////////////////////////////////////////////////////////////////////////////////
 
     private Date parsePublishedDate() {
         try {
@@ -222,6 +224,8 @@ public class ArticleDetailFragment extends Fragment implements
                                 mPhotoView.setImageBitmap(imageContainer.getBitmap());
                                 mRootView.findViewById(R.id.meta_bar)
                                         .setBackgroundColor(mMutedColor);
+                                mFloatingActionButton.setBackgroundTintList(ColorStateList.valueOf(mMutedColor));
+
                             }
                         }
 
