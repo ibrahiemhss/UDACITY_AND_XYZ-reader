@@ -30,6 +30,7 @@ import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 
 import java.text.ParseException;
@@ -128,7 +129,7 @@ public class ArticleDetailFragment extends Fragment implements
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
 
 
-        mFloatingActionButton = mRootView.findViewById(R.id.share_fab);
+        mFloatingActionButton=mRootView.findViewById(R.id.share_fab);
         Toolbar toolbar = mRootView.findViewById(R.id.toolbar_details);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
