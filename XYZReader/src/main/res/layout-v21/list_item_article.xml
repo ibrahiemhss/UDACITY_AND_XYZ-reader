@@ -8,14 +8,14 @@
     android:clipToPadding="false"
     android:focusable="true"
     android:foreground="?selectableItemBackground"
-    app:cardElevation="0dp"
-    app:cardMaxElevation="0dp">
+    app:cardElevation="1dp">
 
     <LinearLayout
         android:id="@+id/LinearListContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        android:paddingBottom="@dimen/list_bottom_padding"
         android:orientation="vertical">
 
         <!--suppress AndroidLintContentDescription -->
