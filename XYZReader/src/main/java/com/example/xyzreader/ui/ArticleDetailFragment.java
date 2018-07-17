@@ -222,10 +222,12 @@ public class ArticleDetailFragment extends Fragment implements
                             if (bitmap != null) {
                                 Palette p = Palette.generate(bitmap, 12);
                                 mMutedColor = p.getDarkMutedColor(0xFF333333);
+                                int mMutedColor2 = p.getMutedColor(0xFF333333);
+
                                 mPhotoView.setImageBitmap(imageContainer.getBitmap());
                                 mRootView.findViewById(R.id.meta_bar)
                                         .setBackgroundColor(mMutedColor);
-                                mFloatingActionButton.setBackgroundTintList(ColorStateList.valueOf(mMutedColor));
+                                mFloatingActionButton.setBackgroundTintList(ColorStateList.valueOf(mMutedColor2));
 
                             }
                         }
