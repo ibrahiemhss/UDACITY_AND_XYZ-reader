@@ -19,7 +19,7 @@ public class ArticleLoader extends CursorLoader {
     public static ArticleLoader newInstanceForItemId(Context context, long itemId) {
         return new ArticleLoader(context, ItemsContract.Items.buildItemUri(itemId));
     }
-
+//////
     public interface Query {
         String[] PROJECTION = {
                 ItemsContract.Items._ID,
