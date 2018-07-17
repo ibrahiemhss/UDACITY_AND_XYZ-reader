@@ -3,34 +3,26 @@ package com.example.xyzreader.ui;
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.app.LoaderManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.Rect;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.graphics.Palette;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
 import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -55,7 +47,6 @@ public class ArticleDetailFragment extends Fragment implements
     private static final String TAG = "ArticleDetailFragment";
 
     private static final String ARG_ITEM_ID = "item_id";
-    private static final float PARALLAX_FACTOR = 1.25f;
     @SuppressLint("SimpleDateFormat")
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss");
     // Use default locale format
@@ -67,15 +58,7 @@ public class ArticleDetailFragment extends Fragment implements
     private long mItemId;
     private View mRootView;
     private int mMutedColor = 0xFF333333;
-    private ObservableScrollView mScrollView;
-    private DrawInsetsFrameLayout mDrawInsetsFrameLayout;
-    private ColorDrawable mStatusBarColorDrawable;
-    private int mTopInset;
-    private View mPhotoContainerView;
     private ImageView mPhotoView;
-    private int mScrollY;
-    private boolean mIsCard = false;
-    private int mStatusBarFullOpacityBottom;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -85,7 +68,7 @@ public class ArticleDetailFragment extends Fragment implements
     }
 
 
-    public static ArticleDetailFragment newInstance(long itemId, String transitionName) {
+    public static ArticleDetailFragment newInstance(long itemId) {
         Bundle arguments = new Bundle();
         arguments.putLong(ARG_ITEM_ID, itemId);
         ArticleDetailFragment fragment = new ArticleDetailFragment();
@@ -120,17 +103,8 @@ public class ArticleDetailFragment extends Fragment implements
 
             }
         }
-
-        mIsCard = getResources().getBoolean(R.bool.detail_is_card);
-        mStatusBarFullOpacityBottom = getResources().getDimensionPixelSize(
-                R.dimen.detail_card_top_margin);
         setHasOptionsMenu(true);
     }
-
-    private ArticleDetailActivity getActivityCast() {
-        return (ArticleDetailActivity) getActivity();
-    }
-
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -150,32 +124,19 @@ public class ArticleDetailFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
-        mDrawInsetsFrameLayout = mRootView.findViewById(R.id.draw_insets_frame_layout);
-        mDrawInsetsFrameLayout.setOnInsetsCallback(new DrawInsetsFrameLayout.OnInsetsCallback() {
-            @Override
-            public void onInsetsChanged(Rect insets) {
-                mTopInset = insets.top;
-            }
-        });
 
-        mScrollView = mRootView.findViewById(R.id.scrollview);
-        mScrollView.setCallbacks(new ObservableScrollView.Callbacks() {
+
+        Toolbar toolbar = mRootView.findViewById(R.id.toolbar_details);
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onScrollChanged() {
-                mScrollY = mScrollView.getScrollY();
-                getActivityCast().onUpButtonFloorChanged(mItemId, ArticleDetailFragment.this);
-                mPhotoContainerView.setTranslationY((int) (mScrollY - mScrollY / PARALLAX_FACTOR));
-                updateStatusBar();
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ArticleListActivity.class);
+                startActivity(intent);
             }
         });
-        MaxWidthLinearLayout mMaxWidthLinearLayout = mRootView.findViewById(R.id.details_container);
 
         mPhotoView = mRootView.findViewById(R.id.photo);
-
-        mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
-
-        mStatusBarColorDrawable = new ColorDrawable(0);
-
         mRootView.findViewById(R.id.share_fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -187,89 +148,8 @@ public class ArticleDetailFragment extends Fragment implements
         });
 
         bindViews();
-        updateStatusBar();
 
-
-        //////////////////////////////////////////////
-        if (wideScreen() && savedInstanceState == null) {
-            animate(mMaxWidthLinearLayout);
-        }
-        //////////////////////////////////////////////
         return mRootView;
-    }
-
-    ////////////////////////////////////////////////////////////////////////////////
-    private void animate(final View view) {
-        TranslateAnimation anim = new TranslateAnimation(0, 0, 0, mPhotoView.getHeight() - 200);
-
-        anim.setAnimationListener(new TranslateAnimation.AnimationListener() {
-
-
-            @Override
-            public void onAnimationStart(Animation animation) {
-                FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) view.getLayoutParams();
-                params.topMargin = mPhotoView.getHeight() - 10;
-                view.setLayoutParams(params);
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) view.getLayoutParams();
-                params.topMargin = mPhotoView.getHeight();
-                view.setLayoutParams(params);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-                FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) view.getLayoutParams();
-                params.topMargin = mPhotoView.getHeight() - 300;
-                view.setLayoutParams(params);
-            }
-
-
-        });
-
-        anim.setFillAfter(true);
-        anim.setDuration(1800);
-        anim.setRepeatCount(1);
-
-        view.startAnimation(anim);
-    }
-
-    //////////////////////////////////////////////////////////////////////////
-    //this return true if device is tablet
-    private boolean isTablet() {
-        return (getActivity().getResources().getConfiguration().screenLayout
-                & Configuration.SCREENLAYOUT_SIZE_MASK)
-                >= Configuration.SCREENLAYOUT_SIZE_LARGE;
-    }
-
-    //This method is known for rotating the screen and small screen
-    private boolean wideScreen() {
-        boolean mTwoPane = false;
-
-        assert getActivity().getSystemService(Context.WINDOW_SERVICE) != null;
-        assert ((WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE)) != null;
-        final int rotation = ((WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getOrientation();
-        switch (rotation) {
-
-            //this if not rotated
-            case Surface.ROTATION_0:
-                if (isTablet()) {
-                    mTwoPane = true;
-                }
-                break;
-
-            case Surface.ROTATION_90:
-                mTwoPane = true;
-                break;
-
-            case Surface.ROTATION_180:
-                mTwoPane = true;
-                break;
-        }
-        return mTwoPane;
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -280,22 +160,7 @@ public class ArticleDetailFragment extends Fragment implements
 
         }
     }
-
     /////////////////////////////////////////////////////////////////////////////////////////
-    private void updateStatusBar() {
-        int color = 0;
-        if (mPhotoView != null && mTopInset != 0 && mScrollY > 0) {
-            float f = progress(mScrollY,
-                    mStatusBarFullOpacityBottom - mTopInset * 3,
-                    mStatusBarFullOpacityBottom - mTopInset);
-            color = Color.argb((int) (255 * f),
-                    (int) (Color.red(mMutedColor) * 0.9),
-                    (int) (Color.green(mMutedColor) * 0.9),
-                    (int) (Color.blue(mMutedColor) * 0.9));
-        }
-        mStatusBarColorDrawable.setColor(color);
-        mDrawInsetsFrameLayout.setInsetBackground(mStatusBarColorDrawable);
-    }
 
     private Date parsePublishedDate() {
         try {
@@ -404,16 +269,4 @@ public class ArticleDetailFragment extends Fragment implements
         mCursor = null;
         bindViews();
     }
-
-    public int getUpButtonFloor() {
-        if (mPhotoContainerView == null || mPhotoView.getHeight() == 0) {
-            return Integer.MAX_VALUE;
-        }
-
-        // account for parallax
-        return mIsCard
-                ? (int) mPhotoContainerView.getTranslationY() + mPhotoView.getHeight() - mScrollY
-                : mPhotoView.getHeight() - mScrollY;
-    }
-
 }

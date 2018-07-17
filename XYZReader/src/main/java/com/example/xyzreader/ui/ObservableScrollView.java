@@ -23,6 +23,7 @@ import android.widget.ScrollView;
 /**
  * A custom ScrollView that can accept a scroll listener.
  */
+@SuppressWarnings("ALL")
 public class ObservableScrollView extends ScrollView {
     private Callbacks mCallbacks;
 
@@ -53,10 +54,7 @@ public class ObservableScrollView extends ScrollView {
         return super.computeVerticalScrollRange();
     }
 
-    public void setCallbacks(Callbacks listener) {
-        mCallbacks = listener;
-    }
-
+    @SuppressWarnings("unused")
     public interface Callbacks {
         void onScrollChanged();
     }

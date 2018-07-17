@@ -1,13 +1,12 @@
 <resources>
     <!-- list -->
-    <dimen name="list_side_margin">64dp</dimen>
     <integer name="list_column_count">3</integer>
 
     <!-- detail -->
     <dimen name="detail_photo_height">420dp</dimen>
-    <dimen name="detail_card_top_margin">@dimen/detail_photo_height</dimen>
     <dimen name="detail_card_max_width">704dp</dimen>
     <dimen name="detail_card_width">600dp</dimen>
+    <dimen name="article_body_padding">8dp</dimen>
     <dimen name="detail_container_hieght">@dimen/detail_photo_height</dimen>
 
 </resources>
