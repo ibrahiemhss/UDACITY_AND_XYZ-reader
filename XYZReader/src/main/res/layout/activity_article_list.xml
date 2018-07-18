@@ -13,7 +13,9 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:elevation="@dimen/app_par_elevation"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        tools:targetApi="lollipop">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -21,8 +23,10 @@
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="bottom"
             android:background="?attr/colorPrimary"
+            android:elevation="@dimen/toolbar_elevation"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            tools:targetApi="lollipop">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -38,6 +42,7 @@
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/list_bottom_padding"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:ignore="PrivateResource">
 

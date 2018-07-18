@@ -6,7 +6,7 @@
     <!-- recyclerVeiw -->
     <dimen name="list_side_padding">5dp</dimen>
     <dimen name="list_top_padding">8dp</dimen>
-    <dimen name="list_bottom_padding">8dp</dimen>
+    <dimen name="list_bottom_padding">24dp</dimen>
 
 
     <!-- list item -->
