@@ -68,7 +68,6 @@
                 android:layout_gravity="center_horizontal"
                 android:animateLayoutChanges="true"
                 android:background="@color/white"
-            android:elevation="@dimen/details_linearLayout_elevation"
                 android:maxWidth="@dimen/detail_card_max_width"
                 android:orientation="vertical"
                 android:padding="@dimen/linearlayout_padding"
