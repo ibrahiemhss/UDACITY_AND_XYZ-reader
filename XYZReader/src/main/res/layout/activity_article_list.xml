@@ -13,7 +13,6 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="@dimen/app_par_elevation"
         android:theme="@style/AppTheme.AppBarOverlay"
         tools:targetApi="lollipop">
 
@@ -23,7 +22,6 @@
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="bottom"
             android:background="?attr/colorPrimary"
-            android:elevation="@dimen/toolbar_elevation"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             tools:targetApi="lollipop">

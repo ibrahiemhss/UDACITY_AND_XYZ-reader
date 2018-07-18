@@ -9,7 +9,6 @@
         android:id="@+id/app_bar_layout_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="@dimen/app_par_elevation"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         tools:targetApi="lollipop">
 
@@ -32,7 +31,6 @@
                     android:id="@+id/photo"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/detail_photo_height"
-                    android:elevation="@dimen/photo_elevation"
                     android:background="@drawable/empty_detail"
                     android:scaleType="centerCrop"
                     tools:targetApi="lollipop" />
@@ -44,7 +42,6 @@
                 android:id="@+id/toolbar_details"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:elevation="@dimen/toolbar_elevation"
                 app:layout_collapseMode="pin"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -84,7 +81,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginBottom="@dimen/detail_metabar_vert_padding"
-                android:elevation="@dimen/meta_bar_elevation"
                 android:orientation="vertical"
                 android:paddingBottom="@dimen/detail_metabar_vert_padding"
                 android:paddingLeft="@dimen/detail_inner_horiz_margin"
@@ -137,7 +133,6 @@
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"
         android:src="@drawable/ic_share"
-        android:elevation="@dimen/fab_elevation"
         app:backgroundTint="@color/theme_accent"
         app:borderWidth="0dp"
         app:fabSize="normal"

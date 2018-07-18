@@ -8,7 +8,7 @@
     android:clipToPadding="false"
     android:focusable="true"
     android:foreground="?selectableItemBackground"
-    app:cardElevation="1dp">
+    app:cardElevation="@dimen/card_elevation">
 
     <LinearLayout
         android:id="@+id/LinearListContainer"
