@@ -1,3 +1,4 @@
 = XYZ Reader 
 
-This repository stores the finished code for the XYZ Reader project in Udacity's Android Nanodegree.
+A mock RSS feed reader featuring banner photos and headlines, uses material
+design to achieve the best possible display.
